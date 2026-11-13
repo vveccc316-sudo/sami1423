@@ -1,0 +1,28 @@
+{
+  "name": "md-shahadat-hossain-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "BIM & Civil Engineering portfolio with a secure admin dashboard (Netlify Functions + Netlify Blobs, or self-hosted Node + SQLite)",
+  "main": "server/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "build-defaults": "node scripts/build-defaults.js",
+    "backup": "node scripts/backup.js",
+    "reset-password": "node scripts/reset-password.js",
+    "build:netlify": "node scripts/build-netlify.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "nodemailer": "^10.3.1",
+    "sharp": "^0.35.5",
+    "@netlify/blobs": "^11.1.8"
+  },
+  "optionalDependencies": {
+    "express": "^5.3.0",
+    "multer": "^2.5.0",
+    "better-sqlite3": "^13.0.3"
+  }
+}

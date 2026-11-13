@@ -1,0 +1,33 @@
+# Netlify settings. Build: copies the public site into dist/. The backend is netlify/functions/api.mjs.
+[build]
+  command = "node scripts/build-netlify.js"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  external_node_modules = ["sharp"]
+  # The function imports the shared server code and uses these libraries; include them explicitly in the package.
+  included_files = ["server/core.js", "server/store-blobs.js", "server/default-site.json", "node_modules/bcryptjs/**", "node_modules/sharp/**", "node_modules/@img/**", "node_modules/detect-libc/**", "node_modules/semver/**", "node_modules/nodemailer/**"]
+
+[dev]
+  framework = "#static"
+  publish = "dist"
+  autoLaunch = false
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-ancestors 'none'"
+    X-Content-Type-Options = "nosniff"
+    Cache-Control = "no-cache"
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
