@@ -49,7 +49,7 @@
   function filtersShown(items) { return S.portfolioFilters.filter(function (f) { return f.key === "all" || items.some(function (p) { return p.category === f.key; }); }); }
   function featuredList() {
     var f = (S.portfolio || []).filter(function (p) { return p.featured && p.visible !== false; }).sort(function (a, b) { return a.order - b.order; });
-    return f.length ? f.slice(0, 6).map(function (p) { return { category: catLabel(p), title: p.title, desc: p.description, img: p.thumbnail || (p.images && p.images[0] && p.images[0].src) || "assets/img/placeholders/project-1.svg", href: S.portfolioHref }; }) : S.projects;
+    return f.length ? f.slice(0, 6).map(function (p) { return { category: catLabel(p), title: p.title, desc: p.description, img: p.thumbnail || (p.images && p.images[0] && p.images[0].src) || "assets/img/placeholders/cover-" + (Math.max(0, S.portfolio.indexOf(p)) % 5 + 1) + ".svg", href: S.portfolioHref }; }) : S.projects;
   }
   function socials() {
     return map(S.social, function (s) {
@@ -134,7 +134,7 @@
 
 
   function portfolio() {
-    S.portfolio.forEach(function (p) { p.tools = p.tools || []; p.status = p.status || "Placeholder"; p.description = p.description || ""; if (!p.images || !p.images.length) p.images = [{ src: p.thumbnail || "assets/img/placeholders/project-1.svg", alt: p.title }]; if (!p.thumbnail) p.thumbnail = p.images[0].src; });
+    S.portfolio.forEach(function (p, ix) { p.tools = p.tools || []; p.status = p.status || "Placeholder"; p.description = p.description || ""; if (!p.images || !p.images.length) p.images = [{ src: p.thumbnail || "assets/img/placeholders/cover-" + (ix % 5 + 1) + ".svg", alt: p.title }]; if (!p.thumbnail) p.thumbnail = p.images[0].src; });
     var items = S.portfolio.filter(function (p) { return p.visible !== false; }).sort(function (a, b) { return a.order - b.order; });
     var tag = function (st) { return '<span class="tag ' + (st === "Learning example" ? "t-dev" : st === "Completed" ? "t-cur" : "t-ph") + '">' + st + "</span>"; };
     var cards = map(items, function (p) {
@@ -417,6 +417,18 @@
       requestAnimationFrame(function () { g.style.transform = "translateY(" + Math.min(window.scrollY, 700) * 0.15 + "px)"; t = false; });
     }, { passive: true });
   }
+
+  /* ---- Photos build up (blur to sharp, revealed from the top) as you scroll ---- */
+  (function photoReveal() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var imgs = [].slice.call(document.querySelectorAll(".proj .thumb img,.shot img,.cthumb img,.li-img,.simg,.masonry img"));
+    if (!imgs.length) return;
+    imgs.forEach(function (im) { im.classList.add("img-rv"); });
+    var q = false;
+    function tick() { q = false; var vh = innerHeight; imgs.forEach(function (im) { var r = (im.parentElement || im).getBoundingClientRect(), p = Math.max(0, Math.min(1, (vh * 0.92 - r.top) / (vh * 0.55))).toFixed(2); if (im.style.getPropertyValue("--ip") !== p) im.style.setProperty("--ip", p); }); }
+    function go() { if (!q) { q = true; requestAnimationFrame(tick); } }
+    addEventListener("scroll", go, { passive: true }); addEventListener("resize", go); tick();
+  })();
 
   /* ---- Cinematic 3D scroll mode (default on; switch off in Admin > Website Design > Scroll effects). Respects reduced-motion. ---- */
   (function cinematic() {

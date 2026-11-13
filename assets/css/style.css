@@ -419,3 +419,17 @@ h1,h2,h3{letter-spacing:-.035em;font-weight:700}
 .cine .card:hover{transform:translateY(-2px)}
 .mark-sq{border-bottom-color:var(--ink)}
 .li-img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:4px;margin-bottom:1rem}
+
+/* ===== Dark modern theme + photo build-up ===== */
+html[data-theme=dark]{--bg:#0A0A0B;--bg2:#101012;--card:#131316;--ink:#F4F4F5;--slate:#A1A1AA;--line:#26262B;--shadow:0 20px 50px -24px rgba(0,0,0,.8)}
+html[data-theme=dark] .nav{background:rgba(10,10,11,.78)}
+html[data-theme=dark] .card{background:var(--card)}
+html[data-theme=dark] .hero{background:radial-gradient(900px 520px at 78% 12%,rgba(138,164,255,.12),transparent 60%),var(--bg)}
+html[data-theme=dark] .btn-pri,html[data-theme=dark] .hero .btn-pri{background:var(--ink);border-color:var(--ink);color:#0A0A0B}
+html[data-theme=dark] .btn-pri:hover,html[data-theme=dark] .hero .btn-pri:hover{background:var(--orange);border-color:var(--orange);color:#0A0A0B}
+html[data-theme=dark] .hero .btn-ghost{color:var(--ink);border-color:var(--line)}
+html[data-theme=dark] .hero .btn-ghost:hover{background:var(--ink);color:#0A0A0B;border-color:var(--ink)}
+html[data-theme=dark] .mark-sq{background:var(--ink);color:#0A0A0B;border-bottom-color:var(--orange)}
+.js .h-in{animation-duration:1.3s}
+html body img.img-rv.img-rv{clip-path:inset(0 0 calc((1 - var(--ip,0)) * 100%) 0);transform:scale(calc(1.18 - var(--ip,0) * .18));filter:blur(calc((1 - var(--ip,0)) * 12px)) brightness(calc(.5 + var(--ip,0) * .5));transition:clip-path 1.4s cubic-bezier(.2,.7,.2,1),transform 1.8s cubic-bezier(.2,.7,.2,1),filter 1.4s ease}
+.cthumb-ph::after{content:"Certificate photo here: Admin › Certificates › Photo";display:block;margin-top:.7rem;padding:0 1rem;font-size:.8rem;line-height:1.4;text-align:center;color:var(--slate)}

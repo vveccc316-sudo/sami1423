@@ -326,10 +326,11 @@ window.SITE = {
     {
       "id": "p01",
       "title": "Project 1 (replace this title)",
-      "category": "cad",
-      "categoryLabel": "CAD & Technical Drawings",
       "thumbnail": "",
       "images": [],
+      "files": [],
+      "category": "cad",
+      "categoryLabel": "CAD & Technical Drawings",
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
@@ -343,10 +344,11 @@ window.SITE = {
     {
       "id": "p06",
       "title": "Project 2 (replace this title)",
-      "category": "bim",
-      "categoryLabel": "BIM & 3D Modeling",
       "thumbnail": "",
       "images": [],
+      "files": [],
+      "category": "bim",
+      "categoryLabel": "BIM & 3D Modeling",
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
@@ -360,10 +362,11 @@ window.SITE = {
     {
       "id": "p02",
       "title": "Project 3 (replace this title)",
-      "category": "cad",
-      "categoryLabel": "CAD & Technical Drawings",
       "thumbnail": "",
       "images": [],
+      "files": [],
+      "category": "cad",
+      "categoryLabel": "CAD & Technical Drawings",
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
@@ -377,10 +380,11 @@ window.SITE = {
     {
       "id": "p07",
       "title": "Project 4 (replace this title)",
-      "category": "bim",
-      "categoryLabel": "BIM & 3D Modeling",
       "thumbnail": "",
       "images": [],
+      "files": [],
+      "category": "bim",
+      "categoryLabel": "BIM & 3D Modeling",
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
@@ -394,10 +398,11 @@ window.SITE = {
     {
       "id": "p11",
       "title": "Project 5 (replace this title)",
-      "category": "est",
-      "categoryLabel": "Estimation & Engineering Documentation",
       "thumbnail": "",
       "images": [],
+      "files": [],
+      "category": "est",
+      "categoryLabel": "Estimation & Engineering Documentation",
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [],

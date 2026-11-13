@@ -80,8 +80,9 @@ const LONG = /^(desc|description|details|text|intro|blurb|biography|careerObject
 const HIDE = new Set(['id', 'order']);
 const NOADD = new Set(['homeSections']);
 const uid = p => p + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+const reorder = p => ({ id: p.id, title: p.title, thumbnail: p.thumbnail, images: p.images, files: p.files, ...p });
 const TEMPLATES = {
-  portfolio: () => ({ id: uid('p'), title: 'New project', category: (SITE.portfolioFilters.find(f => f.key !== 'all') || {}).key || '', thumbnail: '', images: [], description: '', details: '', tools: [], status: 'Placeholder', order: 0, visible: true, completionDate: '', location: '', externalUrl: '', videoUrl: '', files: [], featured: false }),
+  portfolio: () => reorder({ id: uid('p'), title: 'New project', category: (SITE.portfolioFilters.find(f => f.key !== 'all') || {}).key || '', thumbnail: '', images: [], description: '', details: '', tools: [], status: 'Placeholder', order: 0, visible: true, completionDate: '', location: '', externalUrl: '', videoUrl: '', files: [], featured: false }),
   portfolioFilters: () => ({ key: '', label: 'New category' }),
   items: () => ({ id: uid('s'), icon: 'ruler', title: 'New service', description: '', tools: [], developingTools: [], status: 'Current', price: '', order: 0, visible: true, image: '', category: '', buttonText: '', buttonHref: '' }),
   skills: () => ({ icon: 'ruler', name: 'New skill', desc: '', cat: '', status: 'current', level: '', visible: true, image: '' }),
