@@ -97,56 +97,64 @@ window.SITE = {
       "name": "AutoCAD",
       "desc": "Architectural and structural 2D drafting.",
       "cat": "Drafting",
-      "status": "current"
+      "status": "current",
+      "image": ""
     },
     {
       "icon": "building",
       "name": "Revit Architecture",
       "desc": "Architectural modeling for building projects.",
       "cat": "BIM",
-      "status": "current"
+      "status": "current",
+      "image": ""
     },
     {
       "icon": "cube",
       "name": "SketchUp",
       "desc": "Interior and exterior 3D modeling.",
       "cat": "3D Modeling",
-      "status": "current"
+      "status": "current",
+      "image": ""
     },
     {
       "icon": "calc",
       "name": "RCC Estimation & BOQ",
       "desc": "Quantity estimation for reinforced concrete work.",
       "cat": "Estimation",
-      "status": "current"
+      "status": "current",
+      "image": ""
     },
     {
       "icon": "frame",
       "name": "ETABS",
       "desc": "Structural modeling and analysis.",
       "cat": "Structural",
-      "status": "current"
+      "status": "current",
+      "image": ""
     },
     {
       "icon": "doc",
       "name": "As-Built Documentation",
       "desc": "Practical exposure to as-built and industrial building drawings.",
       "cat": "Documentation",
-      "status": "current"
+      "status": "current",
+      "image": ""
     },
     {
       "icon": "steel",
       "name": "Steel Fabrication Drawings",
       "desc": "Learning to prepare fabrication drawings for steel structures.",
       "cat": "Structural",
-      "status": "developing"
+      "status": "developing",
+      "image": ""
     },
     {
       "icon": "layers",
       "name": "Revit Structure",
       "desc": "Learning structural modeling inside Revit.",
       "cat": "BIM",
-      "status": "developing"
+      "status": "developing",
+      "image": ""
     }
   ],
   "projects": [
@@ -197,54 +205,65 @@ window.SITE = {
     {
       "icon": "ruler",
       "name": "Architectural 2D Drafting",
-      "desc": "Plans, elevations, sections and details drawn in AutoCAD."
+      "desc": "Plans, elevations, sections and details drawn in AutoCAD.",
+      "image": ""
     },
     {
       "icon": "frame",
       "name": "Structural 2D Drafting",
-      "desc": "Structural layouts and reinforcement details in AutoCAD."
+      "desc": "Structural layouts and reinforcement details in AutoCAD.",
+      "image": ""
     },
     {
       "icon": "cube",
       "name": "Architectural 3D Modeling",
-      "desc": "Interior and exterior models built in SketchUp."
+      "desc": "Interior and exterior models built in SketchUp.",
+      "image": ""
     },
     {
       "icon": "building",
       "name": "Revit Architectural Modeling",
-      "desc": "Building models developed in Revit Architecture."
+      "desc": "Building models developed in Revit Architecture.",
+      "image": ""
     },
     {
       "icon": "calc",
       "name": "RCC Quantity Estimation & BOQ",
-      "desc": "Quantities and bills of quantities for RCC work."
+      "desc": "Quantities and bills of quantities for RCC work.",
+      "image": ""
     },
     {
       "icon": "doc",
       "name": "Technical Drawing Documentation",
-      "desc": "Organized drawing sets and as-built documentation."
+      "desc": "Organized drawing sets and as-built documentation.",
+      "image": ""
     }
   ],
   "journey": [
     {
       "title": "Diploma in Civil Engineering",
-      "text": "A technical foundation in construction, structures and drawing."
+      "text": "A technical foundation in construction, structures and drawing.",
+      "image": ""
     },
     {
       "title": "AutoCAD drafting",
-      "text": "Developed architectural and structural 2D drafting skills."
+      "text": "Developed architectural and structural 2D drafting skills.",
+      "image": ""
     },
     {
       "title": "3D modeling",
-      "text": "Built 3D models with SketchUp and Revit Architecture."
+      "text": "Built 3D models with SketchUp and Revit Architecture.",
+      "image": ""
     },
     {
       "title": "Industrial drawings",
-      "text": "Practical exposure to industrial drawings and as-built documentation."
+      "text": "Practical exposure to industrial drawings and as-built documentation.",
+      "image": ""
     },
     {
       "title": "Currently developing",
-      "text": "Steel fabrication drawings, Revit Structure and wider BIM workflows."
+      "text": "Steel fabrication drawings, Revit Structure and wider BIM workflows.",
+      "image": ""
     }
   ],
   "preview": [
@@ -309,17 +328,8 @@ window.SITE = {
       "title": "Project 1 (replace this title)",
       "category": "cad",
       "categoryLabel": "CAD & Technical Drawings",
-      "thumbnail": "assets/img/placeholders/portfolio-01-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-01-1.svg",
-          "alt": "Placeholder illustration for Architectural 2D Drafting, sheet 1"
-        },
-        {
-          "src": "assets/img/placeholders/portfolio-01-2.svg",
-          "alt": "Placeholder illustration for Architectural 2D Drafting, sheet 2"
-        }
-      ],
+      "thumbnail": "",
+      "images": [],
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
@@ -335,17 +345,8 @@ window.SITE = {
       "title": "Project 2 (replace this title)",
       "category": "bim",
       "categoryLabel": "BIM & 3D Modeling",
-      "thumbnail": "assets/img/placeholders/portfolio-06-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-06-1.svg",
-          "alt": "Placeholder illustration for Revit Architecture Modeling, sheet 1"
-        },
-        {
-          "src": "assets/img/placeholders/portfolio-06-2.svg",
-          "alt": "Placeholder illustration for Revit Architecture Modeling, sheet 2"
-        }
-      ],
+      "thumbnail": "",
+      "images": [],
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
@@ -361,17 +362,8 @@ window.SITE = {
       "title": "Project 3 (replace this title)",
       "category": "cad",
       "categoryLabel": "CAD & Technical Drawings",
-      "thumbnail": "assets/img/placeholders/portfolio-02-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-02-1.svg",
-          "alt": "Placeholder illustration for Structural 2D Drafting, sheet 1"
-        },
-        {
-          "src": "assets/img/placeholders/portfolio-02-2.svg",
-          "alt": "Placeholder illustration for Structural 2D Drafting, sheet 2"
-        }
-      ],
+      "thumbnail": "",
+      "images": [],
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
@@ -387,13 +379,8 @@ window.SITE = {
       "title": "Project 4 (replace this title)",
       "category": "bim",
       "categoryLabel": "BIM & 3D Modeling",
-      "thumbnail": "assets/img/placeholders/portfolio-07-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-07-1.svg",
-          "alt": "Placeholder illustration for Revit Structure Modeling"
-        }
-      ],
+      "thumbnail": "",
+      "images": [],
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
@@ -409,13 +396,8 @@ window.SITE = {
       "title": "Project 5 (replace this title)",
       "category": "est",
       "categoryLabel": "Estimation & Engineering Documentation",
-      "thumbnail": "assets/img/placeholders/portfolio-11-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-11-1.svg",
-          "alt": "Placeholder illustration for RCC Quantity Estimation"
-        }
-      ],
+      "thumbnail": "",
+      "images": [],
       "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
       "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [],
@@ -695,7 +677,47 @@ window.SITE = {
         ]
       }
     ],
-    "certificates": [],
+    "certificates": [
+      {
+        "id": "c01",
+        "title": "Certificate 1 (AutoCAD Training, replace this title)",
+        "category": "cad",
+        "issuer": "",
+        "date": "",
+        "description": "Replace from Admin > Certificates: upload the certificate photo and/or PDF.",
+        "image": "",
+        "pdf": "",
+        "credentialUrl": "",
+        "order": 1,
+        "visible": true
+      },
+      {
+        "id": "c02",
+        "title": "Certificate 2 (Revit Training, replace this title)",
+        "category": "bim",
+        "issuer": "",
+        "date": "",
+        "description": "Replace from Admin > Certificates: upload the certificate photo and/or PDF.",
+        "image": "",
+        "pdf": "",
+        "credentialUrl": "",
+        "order": 2,
+        "visible": true
+      },
+      {
+        "id": "c03",
+        "title": "Certificate 3 (Estimation / BOQ Training, replace this title)",
+        "category": "est",
+        "issuer": "",
+        "date": "",
+        "description": "Replace from Admin > Certificates: upload the certificate photo and/or PDF.",
+        "image": "",
+        "pdf": "",
+        "credentialUrl": "",
+        "order": 3,
+        "visible": true
+      }
+    ],
     "emptyIntro": "Certificates will be added soon. The categories below show how they will be organized; they are not a list of certificates held.",
     "filledIntro": "Certificates are grouped by category.",
     "timeline": [

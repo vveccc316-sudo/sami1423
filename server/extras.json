@@ -83,10 +83,10 @@
     "btn2Text": "Connect on LinkedIn"
   },
   "design": {
-    "primary": "#E8590C",
-    "secondary": "#2347D8",
-    "accent": "#B8420A",
-    "background": "#FAFAF8",
+    "primary": "#111111",
+    "secondary": "#4B5563",
+    "accent": "#333333",
+    "background": "#FFFFFF",
     "headingFont": "Manrope",
     "bodyFont": "Inter",
     "radius": 10,

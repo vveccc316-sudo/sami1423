@@ -78,6 +78,7 @@
   }
 
   function home() {
+    var im = function (x) { return x && x.image ? '<img class="li-img" src="' + x.image + '" alt="" loading="lazy">' : ""; };
     var HC = S.hero || {}, HS = {}, FEAT = featuredList();
     (S.homeSections || []).forEach(function (x) { HS[x.key] = x; });
     var H = function (k, sub, def) { var h = HS[k]; if (!h) return def; var v = sub ? h.sub : h.heading; return sub ? (v === undefined || v === null ? def : v) : (v || def); };
@@ -95,7 +96,7 @@
     var sk = sec("skills", H("skills", 0, "Skills & Expertise"), H("skills", 1, "Skills I use today, and the ones I am actively learning."),
       '<div class="legend reveal"><span class="tag t-cur">Current skill</span><span class="tag t-dev">Currently learning</span></div><div class="grid g4">' + map(S.skills.filter(function (k) { return k.visible !== false; }), function (k) {
         var cur = k.status === "current";
-        return '<article class="card skill ' + (cur ? "is-cur" : "is-dev") + ' reveal">' + ic(k.icon) + '<span class="tag ' + (cur ? "t-cur" : "t-dev") + '">' + (cur ? "Current skill" : "Currently learning") + "</span><h3>" + k.name + "</h3><p>" + k.desc + '</p><small class="cat">' + k.cat + "</small>" + (k.level ? '<small class="cat lvl">Level: ' + k.level + "</small>" : "") + "</article>";
+        return '<article class="card skill ' + (cur ? "is-cur" : "is-dev") + ' reveal">' + im(k) + ic(k.icon) + '<span class="tag ' + (cur ? "t-cur" : "t-dev") + '">' + (cur ? "Current skill" : "Currently learning") + "</span><h3>" + k.name + "</h3><p>" + k.desc + '</p><small class="cat">' + k.cat + "</small>" + (k.level ? '<small class="cat lvl">Level: ' + k.level + "</small>" : "") + "</article>";
       }) + "</div>", "alt");
 
     var pr = sec("projects", H("projects", 0, "Featured Projects"), H("projects", 1, "Sample cards are placeholders until your real project details and images are added."),
@@ -105,12 +106,12 @@
 
     var sv = sec("services", H("services", 0, "Services & Technical Capabilities"), H("services", 1, "The kinds of technical work my current skills cover."),
       '<div class="grid g3">' + map(S.services, function (s) {
-        return '<article class="card svc reveal">' + ic(s.icon) + "<h3>" + s.name + "</h3><p>" + s.desc + "</p></article>";
+        return '<article class="card svc reveal">' + im(s) + ic(s.icon) + "<h3>" + s.name + "</h3><p>" + s.desc + "</p></article>";
       }) + "</div>", "alt");
 
     var jr = sec("journey", H("journey", 0, "Practical Experience & Learning Journey"), H("journey", 1, "Dates and employers can be added here once confirmed."),
       '<ol class="tl">' + map(S.journey, function (j, i) {
-        return '<li class="reveal' + (i === S.journey.length - 1 ? " now" : "") + '"><h3>' + j.title + "</h3><p>" + j.text + "</p></li>";
+        return '<li class="reveal' + (i === S.journey.length - 1 ? " now" : "") + '">' + im(j) + '<h3>' + j.title + "</h3><p>" + j.text + "</p></li>";
       }) + "</ol>");
 
     var pv = sec("preview", H("preview", 0, "Featured Work Preview"), H("preview", 1, "A visual look at the kind of work this portfolio will showcase. Images are placeholders."),
