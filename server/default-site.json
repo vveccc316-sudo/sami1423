@@ -355,7 +355,7 @@
   "portfolio": [
     {
       "id": "p01",
-      "title": "Architectural 2D Drafting",
+      "title": "Project 1 (replace this title)",
       "category": "cad",
       "categoryLabel": "CAD & Technical Drawings",
       "thumbnail": "assets/img/placeholders/portfolio-01-1.svg",
@@ -369,140 +369,24 @@
           "alt": "Placeholder illustration for Architectural 2D Drafting, sheet 2"
         }
       ],
-      "description": "One-line sample card for architectural plan drafting work.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
+      "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
+      "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
         "AutoCAD"
       ],
       "status": "Placeholder",
       "order": 1,
       "visible": true,
+      "featured": true,
       "completionDate": "",
       "location": "",
       "externalUrl": "",
       "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p02",
-      "title": "Structural 2D Drafting",
-      "category": "cad",
-      "categoryLabel": "CAD & Technical Drawings",
-      "thumbnail": "assets/img/placeholders/portfolio-02-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-02-1.svg",
-          "alt": "Placeholder illustration for Structural 2D Drafting, sheet 1"
-        },
-        {
-          "src": "assets/img/placeholders/portfolio-02-2.svg",
-          "alt": "Placeholder illustration for Structural 2D Drafting, sheet 2"
-        }
-      ],
-      "description": "One-line sample card for structural layout and detailing drawings.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "AutoCAD"
-      ],
-      "status": "Placeholder",
-      "order": 2,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p03",
-      "title": "Steel Structure Fabrication Drawings",
-      "category": "cad",
-      "categoryLabel": "CAD & Technical Drawings",
-      "thumbnail": "assets/img/placeholders/portfolio-03-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-03-1.svg",
-          "alt": "Placeholder illustration for Steel Structure Fabrication Drawings"
-        }
-      ],
-      "description": "Learning example of steel fabrication drawing practice.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "AutoCAD"
-      ],
-      "status": "Learning example",
-      "order": 3,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p04",
-      "title": "Industrial Building Drawings",
-      "category": "cad",
-      "categoryLabel": "CAD & Technical Drawings",
-      "thumbnail": "assets/img/placeholders/portfolio-04-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-04-1.svg",
-          "alt": "Placeholder illustration for Industrial Building Drawings"
-        }
-      ],
-      "description": "Learning example of industrial building drawing practice.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "AutoCAD"
-      ],
-      "status": "Learning example",
-      "order": 4,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p05",
-      "title": "As-Built Drawings and Documentation",
-      "category": "cad",
-      "categoryLabel": "CAD & Technical Drawings",
-      "thumbnail": "assets/img/placeholders/portfolio-05-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-05-1.svg",
-          "alt": "Placeholder illustration for As-Built Drawings and Documentation, sheet 1"
-        },
-        {
-          "src": "assets/img/placeholders/portfolio-05-2.svg",
-          "alt": "Placeholder illustration for As-Built Drawings and Documentation, sheet 2"
-        }
-      ],
-      "description": "One-line sample card for as-built drawing and documentation work.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "AutoCAD"
-      ],
-      "status": "Placeholder",
-      "order": 5,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
+      "files": []
     },
     {
       "id": "p06",
-      "title": "Revit Architecture Modeling",
+      "title": "Project 2 (replace this title)",
       "category": "bim",
       "categoryLabel": "BIM & 3D Modeling",
       "thumbnail": "assets/img/placeholders/portfolio-06-1.svg",
@@ -516,24 +400,55 @@
           "alt": "Placeholder illustration for Revit Architecture Modeling, sheet 2"
         }
       ],
-      "description": "One-line sample card for an architectural BIM model.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
+      "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
+      "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
         "Revit Architecture"
       ],
       "status": "Placeholder",
-      "order": 6,
+      "order": 2,
       "visible": true,
+      "featured": true,
       "completionDate": "",
       "location": "",
       "externalUrl": "",
       "videoUrl": "",
-      "files": [],
-      "featured": false
+      "files": []
+    },
+    {
+      "id": "p02",
+      "title": "Project 3 (replace this title)",
+      "category": "cad",
+      "categoryLabel": "CAD & Technical Drawings",
+      "thumbnail": "assets/img/placeholders/portfolio-02-1.svg",
+      "images": [
+        {
+          "src": "assets/img/placeholders/portfolio-02-1.svg",
+          "alt": "Placeholder illustration for Structural 2D Drafting, sheet 1"
+        },
+        {
+          "src": "assets/img/placeholders/portfolio-02-2.svg",
+          "alt": "Placeholder illustration for Structural 2D Drafting, sheet 2"
+        }
+      ],
+      "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
+      "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
+      "tools": [
+        "AutoCAD"
+      ],
+      "status": "Placeholder",
+      "order": 3,
+      "visible": true,
+      "featured": true,
+      "completionDate": "",
+      "location": "",
+      "externalUrl": "",
+      "videoUrl": "",
+      "files": []
     },
     {
       "id": "p07",
-      "title": "Revit Structure Modeling",
+      "title": "Project 4 (replace this title)",
       "category": "bim",
       "categoryLabel": "BIM & 3D Modeling",
       "thumbnail": "assets/img/placeholders/portfolio-07-1.svg",
@@ -543,110 +458,24 @@
           "alt": "Placeholder illustration for Revit Structure Modeling"
         }
       ],
-      "description": "Learning example of structural modeling in Revit.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
+      "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
+      "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [
         "Revit Structure"
       ],
       "status": "Learning example",
-      "order": 7,
+      "order": 4,
       "visible": true,
+      "featured": false,
       "completionDate": "",
       "location": "",
       "externalUrl": "",
       "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p08",
-      "title": "SketchUp Interior 3D Modeling",
-      "category": "bim",
-      "categoryLabel": "BIM & 3D Modeling",
-      "thumbnail": "assets/img/placeholders/portfolio-08-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-08-1.svg",
-          "alt": "Placeholder illustration for SketchUp Interior 3D Modeling"
-        }
-      ],
-      "description": "One-line sample card for an interior 3D model.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "SketchUp"
-      ],
-      "status": "Placeholder",
-      "order": 8,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p09",
-      "title": "SketchUp Exterior 3D Modeling",
-      "category": "bim",
-      "categoryLabel": "BIM & 3D Modeling",
-      "thumbnail": "assets/img/placeholders/portfolio-09-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-09-1.svg",
-          "alt": "Placeholder illustration for SketchUp Exterior 3D Modeling, sheet 1"
-        },
-        {
-          "src": "assets/img/placeholders/portfolio-09-2.svg",
-          "alt": "Placeholder illustration for SketchUp Exterior 3D Modeling, sheet 2"
-        }
-      ],
-      "description": "One-line sample card for an exterior building model.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "SketchUp"
-      ],
-      "status": "Placeholder",
-      "order": 9,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p10",
-      "title": "Architectural 3D Building Models",
-      "category": "bim",
-      "categoryLabel": "BIM & 3D Modeling",
-      "thumbnail": "assets/img/placeholders/portfolio-10-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-10-1.svg",
-          "alt": "Placeholder illustration for Architectural 3D Building Models"
-        }
-      ],
-      "description": "One-line sample card for a 3D building model.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "SketchUp",
-        "Revit Architecture"
-      ],
-      "status": "Placeholder",
-      "order": 10,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
+      "files": []
     },
     {
       "id": "p11",
-      "title": "RCC Quantity Estimation",
+      "title": "Project 5 (replace this title)",
       "category": "est",
       "categoryLabel": "Estimation & Engineering Documentation",
       "thumbnail": "assets/img/placeholders/portfolio-11-1.svg",
@@ -656,126 +485,18 @@
           "alt": "Placeholder illustration for RCC Quantity Estimation"
         }
       ],
-      "description": "One-line sample card for RCC quantity take-off.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
+      "description": "Replace this card from Admin > Projects: add title, Cover image, photos and PDFs.",
+      "details": "Placeholder. Open this project in Admin, upload the Cover image (replaces the placeholder), add as many photos and PDFs as you need, then Save changes.",
       "tools": [],
       "status": "Placeholder",
-      "order": 11,
+      "order": 5,
       "visible": true,
+      "featured": false,
       "completionDate": "",
       "location": "",
       "externalUrl": "",
       "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p12",
-      "title": "BOQ Preparation",
-      "category": "est",
-      "categoryLabel": "Estimation & Engineering Documentation",
-      "thumbnail": "assets/img/placeholders/portfolio-12-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-12-1.svg",
-          "alt": "Placeholder illustration for BOQ Preparation, sheet 1"
-        },
-        {
-          "src": "assets/img/placeholders/portfolio-12-2.svg",
-          "alt": "Placeholder illustration for BOQ Preparation, sheet 2"
-        }
-      ],
-      "description": "One-line sample card for a bill of quantities.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [],
-      "status": "Placeholder",
-      "order": 12,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p13",
-      "title": "ETABS Structural Modeling",
-      "category": "est",
-      "categoryLabel": "Estimation & Engineering Documentation",
-      "thumbnail": "assets/img/placeholders/portfolio-13-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-13-1.svg",
-          "alt": "Placeholder illustration for ETABS Structural Modeling"
-        }
-      ],
-      "description": "One-line sample card for a structural analysis model.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "ETABS"
-      ],
-      "status": "Placeholder",
-      "order": 13,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p14",
-      "title": "ETABS Structural Analysis",
-      "category": "est",
-      "categoryLabel": "Estimation & Engineering Documentation",
-      "thumbnail": "assets/img/placeholders/portfolio-14-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-14-1.svg",
-          "alt": "Placeholder illustration for ETABS Structural Analysis"
-        }
-      ],
-      "description": "One-line sample card for structural analysis results.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [
-        "ETABS"
-      ],
-      "status": "Placeholder",
-      "order": 14,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
-    },
-    {
-      "id": "p15",
-      "title": "Engineering Drawing Documentation",
-      "category": "est",
-      "categoryLabel": "Estimation & Engineering Documentation",
-      "thumbnail": "assets/img/placeholders/portfolio-15-1.svg",
-      "images": [
-        {
-          "src": "assets/img/placeholders/portfolio-15-1.svg",
-          "alt": "Placeholder illustration for Engineering Drawing Documentation"
-        }
-      ],
-      "description": "One-line sample card for an organized drawing set.",
-      "details": "Placeholder details. Replace with a real description of the work, what you did, and what you learned.",
-      "tools": [],
-      "status": "Placeholder",
-      "order": 15,
-      "visible": true,
-      "completionDate": "",
-      "location": "",
-      "externalUrl": "",
-      "videoUrl": "",
-      "files": [],
-      "featured": false
+      "files": []
     }
   ],
   "about": {
@@ -1234,11 +955,19 @@
       "enabled": true
     },
     {
-      "key": "highlights",
-      "label": "Professional Highlights",
+      "key": "about",
+      "label": "About Me",
       "enabled": true,
-      "heading": "Professional Highlights",
+      "heading": "About Me",
       "sub": ""
+    },
+    {
+      "key": "projects",
+      "label": "Featured Projects",
+      "enabled": true,
+      "heading": "My Work",
+      "sub": "Selected drawings, BIM models and technical projects.",
+      "buttonText": "View Full Portfolio"
     },
     {
       "key": "skills",
@@ -1246,14 +975,6 @@
       "enabled": true,
       "heading": "Skills & Expertise",
       "sub": "Skills I use today, and the ones I am actively learning."
-    },
-    {
-      "key": "projects",
-      "label": "Featured Projects",
-      "enabled": true,
-      "heading": "Featured Projects",
-      "sub": "Sample cards are placeholders until your real project details and images are added.",
-      "buttonText": "View Full Portfolio"
     },
     {
       "key": "services",
@@ -1281,6 +1002,13 @@
       "key": "contact",
       "label": "Closing Section",
       "enabled": true
+    },
+    {
+      "key": "highlights",
+      "label": "Professional Highlights",
+      "enabled": false,
+      "heading": "Professional Highlights",
+      "sub": ""
     }
   ],
   "homeClosing": {
@@ -1291,13 +1019,13 @@
     "btn2Text": "Connect on LinkedIn"
   },
   "design": {
-    "primary": "#FF6A13",
-    "secondary": "#1F5BFF",
+    "primary": "#E8590C",
+    "secondary": "#2347D8",
     "accent": "#B8420A",
-    "background": "#F7F5F1",
-    "headingFont": "Bricolage Grotesque",
-    "bodyFont": "Figtree",
-    "radius": 14,
+    "background": "#FAFAF8",
+    "headingFont": "Manrope",
+    "bodyFont": "Inter",
+    "radius": 10,
     "buttonStyle": "pill",
     "theme": "light",
     "motion": "cinematic"

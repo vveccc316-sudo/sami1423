@@ -19,11 +19,19 @@
       "enabled": true
     },
     {
-      "key": "highlights",
-      "label": "Professional Highlights",
+      "key": "about",
+      "label": "About Me",
       "enabled": true,
-      "heading": "Professional Highlights",
+      "heading": "About Me",
       "sub": ""
+    },
+    {
+      "key": "projects",
+      "label": "Featured Projects",
+      "enabled": true,
+      "heading": "My Work",
+      "sub": "Selected drawings, BIM models and technical projects.",
+      "buttonText": "View Full Portfolio"
     },
     {
       "key": "skills",
@@ -31,14 +39,6 @@
       "enabled": true,
       "heading": "Skills & Expertise",
       "sub": "Skills I use today, and the ones I am actively learning."
-    },
-    {
-      "key": "projects",
-      "label": "Featured Projects",
-      "enabled": true,
-      "heading": "Featured Projects",
-      "sub": "Sample cards are placeholders until your real project details and images are added.",
-      "buttonText": "View Full Portfolio"
     },
     {
       "key": "services",
@@ -66,6 +66,13 @@
       "key": "contact",
       "label": "Closing Section",
       "enabled": true
+    },
+    {
+      "key": "highlights",
+      "label": "Professional Highlights",
+      "enabled": false,
+      "heading": "Professional Highlights",
+      "sub": ""
     }
   ],
   "homeClosing": {
@@ -76,13 +83,13 @@
     "btn2Text": "Connect on LinkedIn"
   },
   "design": {
-    "primary": "#FF6A13",
-    "secondary": "#1F5BFF",
+    "primary": "#E8590C",
+    "secondary": "#2347D8",
     "accent": "#B8420A",
-    "background": "#F7F5F1",
-    "headingFont": "Bricolage Grotesque",
-    "bodyFont": "Figtree",
-    "radius": 14,
+    "background": "#FAFAF8",
+    "headingFont": "Manrope",
+    "bodyFont": "Inter",
+    "radius": 10,
     "buttonStyle": "pill",
     "theme": "light",
     "motion": "cinematic"

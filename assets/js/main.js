@@ -125,7 +125,8 @@
     var ct = '<section id="contact" class="cta-sec" data-spy><div class="wrap"><div class="cta-box reveal"><h2>' + CL.heading + "</h2><p>" + CL.text + '</p><div class="cta"><a class="btn btn-pri" href="' + CL.btn1Href + '">' + CL.btn1Text + "</a>" + li + "</div>" +
       (S.contact.email ? '<p class="mail"><a href="mailto:' + S.contact.email + '">' + S.contact.email + "</a></p>" : "") + "</div></div></section>";
 
-    var parts = { hero: hero, highlights: hl, skills: sk, projects: pr, services: sv, journey: jr, preview: pv, contact: ct };
+    var ab = sec("about", H("about", 0, (S.about && S.about.heading) || "About Me"), "", '<div class="about-grid"><p class="lead reveal">' + ((S.about && S.about.intro) || S.intro) + '</p><div class="about-facts">' + map(S.highlights, function (h) { return '<div class="fact reveal"><small>' + h.label + '</small><strong>' + h.value + '</strong></div>'; }) + '</div></div><div class="reveal"><a class="btn btn-ghost" href="about.html">More about me</a></div>');
+    var parts = { hero: hero, about: ab, highlights: hl, skills: sk, projects: pr, services: sv, journey: jr, preview: pv, contact: ct };
     var order = (S.homeSections && S.homeSections.length) ? S.homeSections : Object.keys(parts).map(function (k) { return { key: k, enabled: true }; });
     return map(order.filter(function (x) { return x.enabled !== false && parts[x.key]; }), function (x) { return parts[x.key]; });
   }
