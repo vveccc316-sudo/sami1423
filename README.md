@@ -90,3 +90,6 @@ netlify/functions/api.mjs  Netlify Function entry     netlify.toml             N
 scripts/                 build-netlify.js, backup.js, reset-password.js, build-defaults.js
 ```
 `assets/js/site-config.js` is the starting content for static previews; once the backend runs, the live content comes from the database/Blobs.
+
+## Cinematic 3D scroll effects
+The public pages have a "cinematic" mode: animated headline words, a 3D perspective floor and glow behind the hero, a portrait that tilts with the mouse, project cards and gallery images that tilt in depth as you scroll (with a subtle image parallax), hover tilt on cards, and a scroll progress bar. It is on by default. Switch it off in Admin > Website Design > "Scroll effects (3D)" (Classic = no 3D effects). Visitors who set "reduce motion" on their device never get these effects, and on phones the effect is automatically softer.

@@ -1299,7 +1299,8 @@
     "bodyFont": "Figtree",
     "radius": 14,
     "buttonStyle": "pill",
-    "theme": "light"
+    "theme": "light",
+    "motion": "cinematic"
   },
   "seo": {
     "title": "MD Shahadat Hossain | Aspiring BIM Professional",

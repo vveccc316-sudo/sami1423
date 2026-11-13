@@ -1,60 +1,211 @@
 {
-  "brand": { "siteName": "MD Shahadat Hossain", "logo": "", "favicon": "", "footerLogo": "" },
-  "hero": { "cta1Text": "View My Projects", "cta1Href": "#projects", "cta2Text": "Contact Me", "cta2Href": "#contact", "bgImage": "" },
+  "brand": {
+    "siteName": "MD Shahadat Hossain",
+    "logo": "",
+    "favicon": "",
+    "footerLogo": ""
+  },
+  "hero": {
+    "cta1Text": "View My Projects",
+    "cta1Href": "#projects",
+    "cta2Text": "Contact Me",
+    "cta2Href": "#contact",
+    "bgImage": ""
+  },
   "homeSections": [
-    { "key": "hero", "label": "Hero", "enabled": true },
-    { "key": "highlights", "label": "Professional Highlights", "enabled": true, "heading": "Professional Highlights", "sub": "" },
-    { "key": "skills", "label": "Skills & Expertise", "enabled": true, "heading": "Skills & Expertise", "sub": "Skills I use today, and the ones I am actively learning." },
-    { "key": "projects", "label": "Featured Projects", "enabled": true, "heading": "Featured Projects", "sub": "Sample cards are placeholders until your real project details and images are added.", "buttonText": "View Full Portfolio" },
-    { "key": "services", "label": "Services & Technical Capabilities", "enabled": true, "heading": "Services & Technical Capabilities", "sub": "The kinds of technical work my current skills cover." },
-    { "key": "journey", "label": "Practical Experience & Learning Journey", "enabled": true, "heading": "Practical Experience & Learning Journey", "sub": "Dates and employers can be added here once confirmed." },
-    { "key": "preview", "label": "Featured Work Preview", "enabled": true, "heading": "Featured Work Preview", "sub": "A visual look at the kind of work this portfolio will showcase. Images are placeholders.", "buttonText": "Explore the Portfolio" },
-    { "key": "contact", "label": "Closing Section", "enabled": true }
+    {
+      "key": "hero",
+      "label": "Hero",
+      "enabled": true
+    },
+    {
+      "key": "highlights",
+      "label": "Professional Highlights",
+      "enabled": true,
+      "heading": "Professional Highlights",
+      "sub": ""
+    },
+    {
+      "key": "skills",
+      "label": "Skills & Expertise",
+      "enabled": true,
+      "heading": "Skills & Expertise",
+      "sub": "Skills I use today, and the ones I am actively learning."
+    },
+    {
+      "key": "projects",
+      "label": "Featured Projects",
+      "enabled": true,
+      "heading": "Featured Projects",
+      "sub": "Sample cards are placeholders until your real project details and images are added.",
+      "buttonText": "View Full Portfolio"
+    },
+    {
+      "key": "services",
+      "label": "Services & Technical Capabilities",
+      "enabled": true,
+      "heading": "Services & Technical Capabilities",
+      "sub": "The kinds of technical work my current skills cover."
+    },
+    {
+      "key": "journey",
+      "label": "Practical Experience & Learning Journey",
+      "enabled": true,
+      "heading": "Practical Experience & Learning Journey",
+      "sub": "Dates and employers can be added here once confirmed."
+    },
+    {
+      "key": "preview",
+      "label": "Featured Work Preview",
+      "enabled": true,
+      "heading": "Featured Work Preview",
+      "sub": "A visual look at the kind of work this portfolio will showcase. Images are placeholders.",
+      "buttonText": "Explore the Portfolio"
+    },
+    {
+      "key": "contact",
+      "label": "Closing Section",
+      "enabled": true
+    }
   ],
   "homeClosing": {
     "heading": "Let’s Build Something Meaningful.",
     "text": "Interested in CAD, BIM, Civil Engineering, or technical collaboration? Feel free to connect with me and explore my work.",
-    "btn1Text": "Contact Me", "btn1Href": "contact.html", "btn2Text": "Connect on LinkedIn"
+    "btn1Text": "Contact Me",
+    "btn1Href": "contact.html",
+    "btn2Text": "Connect on LinkedIn"
   },
   "design": {
-    "primary": "#FF6A13", "secondary": "#1F5BFF", "accent": "#B8420A", "background": "#F7F5F1",
-    "headingFont": "Bricolage Grotesque", "bodyFont": "Figtree", "radius": 14, "buttonStyle": "pill", "theme": "light"
+    "primary": "#FF6A13",
+    "secondary": "#1F5BFF",
+    "accent": "#B8420A",
+    "background": "#F7F5F1",
+    "headingFont": "Bricolage Grotesque",
+    "bodyFont": "Figtree",
+    "radius": 14,
+    "buttonStyle": "pill",
+    "theme": "light",
+    "motion": "cinematic"
   },
   "seo": {
     "title": "MD Shahadat Hossain | Aspiring BIM Professional",
     "description": "Portfolio of MD Shahadat Hossain, Aspiring BIM Professional with a Diploma in Civil Engineering.",
     "keywords": "BIM, Revit, AutoCAD, SketchUp, ETABS, Civil Engineering, Dhaka",
-    "ogTitle": "", "ogDescription": "", "ogImage": ""
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": ""
   },
-  "footer": { "role": "Aspiring BIM Professional", "copyright": "© {year} MD Shahadat Hossain. All rights reserved.", "showSocial": true },
-  "profile": { "displayName": "", "coverImage": "", "careerObjective": "", "biography": "", "website": "", "phone": "", "education": [], "experience": [] },
+  "footer": {
+    "role": "Aspiring BIM Professional",
+    "copyright": "© {year} MD Shahadat Hossain. All rights reserved.",
+    "showSocial": true
+  },
+  "profile": {
+    "displayName": "",
+    "coverImage": "",
+    "careerObjective": "",
+    "biography": "",
+    "website": "",
+    "phone": "",
+    "education": [],
+    "experience": []
+  },
   "aboutExtras": {
-    "headings": { "journey": "My Journey", "focus": "What I Focus On", "learning": "My Learning Journey", "learningSub": "A path of learning and skills development.", "skills": "Technical Skills", "skillsSub": "Skills I use, and the ones I am still building." },
-    "cta1Text": "Explore My Skills", "cta1Href": "#skills", "cta2Text": "View My Projects", "cta2Href": "portfolio.html",
-    "education": [], "experience": [], "sections": []
+    "headings": {
+      "journey": "My Journey",
+      "focus": "What I Focus On",
+      "learning": "My Learning Journey",
+      "learningSub": "A path of learning and skills development.",
+      "skills": "Technical Skills",
+      "skillsSub": "Skills I use, and the ones I am still building."
+    },
+    "cta1Text": "Explore My Skills",
+    "cta1Href": "#skills",
+    "cta2Text": "View My Projects",
+    "cta2Href": "portfolio.html",
+    "education": [],
+    "experience": [],
+    "sections": []
   },
   "contactExtras": {
     "formNote": "Your message is sent securely to my dashboard. If sending fails, an email draft opens as a fallback.",
     "successMessage": "Thank you. Your message has been received and I will get back to you.",
     "errorMessage": "Something went wrong while sending. Please check the fields and try again, or email me directly.",
-    "infoHeading": "Contact Information", "formHeading": "Send a Message",
-    "ctaEmailText": "Send an Email", "ctaWhatsappText": "Contact on WhatsApp",
-    "labels": { "name": "Full Name", "email": "Email Address", "type": "Project / Inquiry Type", "budget": "Budget", "message": "Message", "submit": "Send Message" },
+    "infoHeading": "Contact Information",
+    "formHeading": "Send a Message",
+    "ctaEmailText": "Send an Email",
+    "ctaWhatsappText": "Contact on WhatsApp",
+    "labels": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "type": "Project / Inquiry Type",
+      "budget": "Budget",
+      "message": "Message",
+      "submit": "Send Message"
+    },
     "cards": [
-      { "icon": "mail", "title": "Email", "value": "{email}", "href": "mailto:{email}", "visible": true },
-      { "icon": "chat", "title": "WhatsApp", "value": "{whatsappDisplay}", "href": "https://wa.me/{whatsappDigits}", "visible": true },
-      { "icon": "linkedin", "title": "LinkedIn", "value": "View LinkedIn Profile", "href": "{linkedin}", "visible": true },
-      { "icon": "pin", "title": "Location", "value": "{location}", "href": "", "visible": true }
+      {
+        "icon": "mail",
+        "title": "Email",
+        "value": "{email}",
+        "href": "mailto:{email}",
+        "visible": true
+      },
+      {
+        "icon": "chat",
+        "title": "WhatsApp",
+        "value": "{whatsappDisplay}",
+        "href": "https://wa.me/{whatsappDigits}",
+        "visible": true
+      },
+      {
+        "icon": "linkedin",
+        "title": "LinkedIn",
+        "value": "View LinkedIn Profile",
+        "href": "{linkedin}",
+        "visible": true
+      },
+      {
+        "icon": "pin",
+        "title": "Location",
+        "value": "{location}",
+        "href": "",
+        "visible": true
+      }
     ]
   },
   "extraFilters": [
-    { "key": "architectural", "label": "Architectural Design" },
-    { "key": "interior", "label": "Interior Design" },
-    { "key": "structural", "label": "Structural Design" },
-    { "key": "bim-projects", "label": "BIM Projects" },
-    { "key": "autocad", "label": "AutoCAD Drawings" },
-    { "key": "steel-industrial", "label": "Steel Structure & Industrial Drawings" },
-    { "key": "rendering-3d", "label": "3D Modeling & Rendering" },
-    { "key": "civil", "label": "Civil Engineering Projects" }
+    {
+      "key": "architectural",
+      "label": "Architectural Design"
+    },
+    {
+      "key": "interior",
+      "label": "Interior Design"
+    },
+    {
+      "key": "structural",
+      "label": "Structural Design"
+    },
+    {
+      "key": "bim-projects",
+      "label": "BIM Projects"
+    },
+    {
+      "key": "autocad",
+      "label": "AutoCAD Drawings"
+    },
+    {
+      "key": "steel-industrial",
+      "label": "Steel Structure & Industrial Drawings"
+    },
+    {
+      "key": "rendering-3d",
+      "label": "3D Modeling & Rendering"
+    },
+    {
+      "key": "civil",
+      "label": "Civil Engineering Projects"
+    }
   ]
 }

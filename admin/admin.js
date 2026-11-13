@@ -21,7 +21,7 @@ const api = async (path, o = {}) => {
   return j;
 };
 const fail = e => { if (!e.handled) toast(e.message + (e.data && e.data.details ? ' ' + e.data.details.join('; ') : ''), true); };
-const LABELS = { portfolio: 'Projects', portfolioFilters: 'Project categories', servicesPage: 'Services page', services: 'Home page service items', projects: 'Home fallback project cards', homeSections: 'Home sections', homeClosing: 'Home closing section', cards: 'Cards', nav: 'Menu links', social: 'Social links', seo: 'SEO', skillGroups: 'Skill groups', cta1Text: 'Button 1 text', cta1Href: 'Button 1 link', cta2Text: 'Button 2 text', cta2Href: 'Button 2 link', btn1Text: 'Button 1 text', btn1Href: 'Button 1 link', btn2Text: 'Button 2 text', ogImage: 'Social sharing image', externalUrl: 'External project link', videoUrl: 'Video link (YouTube, Vimeo, Google Drive or .mp4 link; plays inside the project details)', credentialUrl: 'Credential verification link', developingTools: 'Tools (currently learning)', completionDate: 'Completion date', buttonText: 'Button text', buttonHref: 'Button link', pdf: 'PDF file', src: 'File', thumbnail: 'Cover image (shown on the project card)', images: 'Project photos (front view, side view, renders...)', files: 'PDF drawings and other files', alt: 'Caption (example: Front view)' };
+const LABELS = { portfolio: 'Projects', portfolioFilters: 'Project categories', servicesPage: 'Services page', services: 'Home page service items', projects: 'Home fallback project cards', homeSections: 'Home sections', homeClosing: 'Home closing section', cards: 'Cards', nav: 'Menu links', social: 'Social links', seo: 'SEO', skillGroups: 'Skill groups', cta1Text: 'Button 1 text', cta1Href: 'Button 1 link', cta2Text: 'Button 2 text', cta2Href: 'Button 2 link', btn1Text: 'Button 1 text', btn1Href: 'Button 1 link', btn2Text: 'Button 2 text', ogImage: 'Social sharing image', externalUrl: 'External project link', videoUrl: 'Video link (YouTube, Vimeo or file URL)', credentialUrl: 'Credential verification link', developingTools: 'Tools (currently learning)', completionDate: 'Completion date', buttonText: 'Button text', buttonHref: 'Button link', pdf: 'PDF file', src: 'File', motion: 'Scroll effects (3D)', thumbnail: 'Cover image (shown on the project card)', images: 'Project photos (front view, side view, renders...)', files: 'PDF drawings and other files', alt: 'Caption (example: Front view)' };
 const label = k => LABELS[k] || String(k).replace(/([A-Z])/g, ' $1').replace(/[_-]/g, ' ').replace(/^./, c => c.toUpperCase());
 let SITE = null, META = null, dirty = false;
 const mark = () => { dirty = true; const d = $('#dirty'); if (d) d.hidden = false; const b = $('#save'); if (b) b.disabled = false; };
@@ -100,6 +100,7 @@ const itemTitle = (x, i) => (x && typeof x === 'object') ? (x.title || x.name ||
 function selectOptions(key, path, obj) {
   if (key === 'icon') return META.icons;
   if (key === 'theme') return ['light', 'dark'];
+  if (key === 'motion') return [['cinematic', 'Cinematic 3D (scroll effects on)'], ['classic', 'Classic (no 3D scroll effects)']];
   if (key === 'buttonStyle') return ['pill', 'rounded', 'square'];
   if (key === 'headingFont' || key === 'bodyFont') return META.fonts;
   if (key === 'status' && 'cat' in obj) return ['current', 'developing'];
@@ -320,7 +321,7 @@ let USER = '', unread = 0;
 const refreshBadge = async () => { try { unread = (await api('/api/admin/stats')).unread; const b = $('#badge'); if (b) { b.textContent = unread; b.hidden = !unread; } } catch { } };
 async function boot(user) {
   USER = user;
-  try { [META, SITE] = [await api('/api/admin/meta'), (await api('/api/admin/site')).site]; } catch (e) { return fail(e); }
+  try { [META, SITE] = [await api('/api/admin/meta'), (await api('/api/admin/site')).site]; if (SITE.design && !SITE.design.motion) SITE.design.motion = 'cinematic'; } catch (e) { return fail(e); }
   const app = $('#app'); app.replaceChildren();
   const side = h('nav', { class: 'side', 'aria-label': 'Admin' }, h('div', { class: 'brand' }, h('span', {}, 'MSH'), 'Admin'),
     SECTIONS.map(s => h('a', { href: s.id === 'logout' ? '#/logout' : '#/' + s.id, 'data-id': s.id, onclick: () => side.classList.remove('open') }, s.label, s.badge && h('span', { class: 'badge', id: 'badge', hidden: true }))));

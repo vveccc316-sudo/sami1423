@@ -45,7 +45,7 @@
   var map = function (a, f) { return a.map(f).join(""); };
 
   var tok = function (v) { return String(v == null ? "" : v).replace(/\{(\w+)\}/g, function (m, k) { return k === "whatsappDigits" ? String(S.contact.whatsapp || "").replace(/\D/g, "") : (S.contact[k] !== undefined ? S.contact[k] : m); }); };
-  function catLabel(p) { var f = (S.portfolioFilters || []).filter(function (x) { return x.key === p.category; })[0]; return f ? f.label : (p.categoryLabel || p.category || ""); }
+  function catLabel(p) { var f = (S.portfolioFilters || []).filter(function (x) { return x.key === p.category; })[0]; return f ? f.label : (catLabel(p) || p.category || ""); }
   function filtersShown(items) { return S.portfolioFilters.filter(function (f) { return f.key === "all" || items.some(function (p) { return p.category === f.key; }); }); }
   function featuredList() {
     var f = (S.portfolio || []).filter(function (p) { return p.featured && p.visible !== false; }).sort(function (a, b) { return a.order - b.order; });
@@ -132,44 +132,18 @@
 
 
   function portfolio() {
-    S.portfolio.forEach(function (p) { p.tools = p.tools || []; p.status = p.status || "Placeholder"; p.description = p.description || ""; p.files = p.files || []; p.images = (p.images || []).filter(function (im) { if (/\.pdf($|\?)/i.test((im && im.src) || "")) { p.files.push({ src: im.src, label: im.alt || "PDF" }); return false; } return !!(im && im.src); }); if (!p.images || !p.images.length) p.images = [{ src: p.thumbnail || "assets/img/placeholders/project-1.svg", alt: p.title }]; if (!p.thumbnail) p.thumbnail = p.images[0].src; });
+    S.portfolio.forEach(function (p) { p.tools = p.tools || []; p.status = p.status || "Placeholder"; p.description = p.description || ""; if (!p.images || !p.images.length) p.images = [{ src: p.thumbnail || "assets/img/placeholders/project-1.svg", alt: p.title }]; if (!p.thumbnail) p.thumbnail = p.images[0].src; });
     var items = S.portfolio.filter(function (p) { return p.visible !== false; }).sort(function (a, b) { return a.order - b.order; });
     var tag = function (st) { return '<span class="tag ' + (st === "Learning example" ? "t-dev" : st === "Completed" ? "t-cur" : "t-ph") + '">' + st + "</span>"; };
     var cards = map(items, function (p) {
       return '<article class="card proj reveal" data-cat="' + p.category + '" data-id="' + p.id + '"><button type="button" class="thumb" data-open="' + p.id + '" aria-label="Open details: ' + p.title + '"><img src="' + p.thumbnail + '" alt="' + p.images[0].alt + '" width="800" height="600" loading="lazy" data-fallback="project"></button>' +
-        '<div class="proj-b"><div class="proj-top"><small class="cat">' + catLabel(p) + "</small>" + tag(p.status) + "</div><h3>" + p.title + "</h3><p>" + p.description + "</p>" +
+        '<div class="proj-b"><div class="proj-top"><small class="cat">' + p.categoryLabel + "</small>" + tag(p.status) + "</div><h3>" + p.title + "</h3><p>" + p.description + "</p>" +
         (p.tools.length ? '<p class="tools"><span class="sr">Tools: </span>' + p.tools.join(", ") + "</p>" : "") +
         '<button type="button" class="lnk" data-open="' + p.id + '">View Project<span class="sr">: ' + p.title + "</span></button></div></article>";
     });
     return '<section class="p-head"><div class="hero-grid" aria-hidden="true"></div><div class="wrap"><p class="eyebrow h-in">My Work</p><h1 class="h-in" style="--d:.1s">Projects & Technical Work</h1><p class="lead h-in" style="--d:.2s">Explore my architectural and structural CAD drawings, BIM models, 3D modeling work, and engineering estimation projects.</p><p class="note h-in" style="--d:.3s">Cards marked Placeholder are sample entries until real work is added. Cards marked Learning example show skills I am still developing.</p></div></section>' +
       '<section class="sec p-gal"><div class="wrap"><div class="filters" role="group" aria-label="Filter projects">' + map(filtersShown(items), function (f, i) { return '<button type="button" class="chip" data-filter="' + f.key + '" aria-pressed="' + (i === 0) + '">' + f.label + "</button>"; }) + '</div><p class="sr" id="f-status" aria-live="polite"></p><div class="grid g3" id="p-grid">' + cards + '</div><p class="empty" id="p-empty" hidden>No projects in this category yet.</p></div></section>' +
-      '<dialog class="lb" id="lb" aria-labelledby="lb-title"><div class="lb-in"><button type="button" class="lb-x" aria-label="Close project details"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button><div class="lb-media"><div class="lb-video" id="lb-video" hidden></div><div class="lb-stack" id="lb-stack"></div><img id="lb-img" alt=""><p class="lb-cap" id="lb-cap"></p><div class="lb-thumbs" id="lb-thumbs"></div><div class="lb-pdf" id="lb-pdf" hidden></div></div><div class="lb-info"><small class="cat" id="lb-cat"></small><h2 id="lb-title"></h2><div id="lb-tag"></div><p id="lb-desc"></p><p id="lb-more"></p><dl id="lb-meta"></dl></div></div></dialog>';
-  }
-
-  function videoEmbed(u) {
-    u = String(u || "").trim().replace(/"/g, ""); if (!u) return "";
-    var m, al = 'allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"';
-    if ((m = u.match(/(?:youtube\.com\/(?:watch\?(?:[^#]*&)?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([\w-]{11})/))) return '<iframe src="https://www.youtube-nocookie.com/embed/' + m[1] + '?rel=0" title="Project video" ' + al + "></iframe>";
-    if ((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return '<iframe src="https://player.vimeo.com/video/' + m[1] + '" title="Project video" ' + al + "></iframe>";
-    if ((m = u.match(/drive\.google\.com\/file\/d\/([\w-]+)/))) return '<iframe src="https://drive.google.com/file/d/' + m[1] + '/preview" title="Project video" ' + al + "></iframe>";
-    if (/\.(mp4|webm|ogg|mov)($|\?)/i.test(u)) return '<video controls preload="metadata" playsinline src="' + u + '"></video>';
-    return "";
-  }
-
-  function openPdf(src, name) {
-    if (navigator.pdfViewerEnabled === false) { window.open(src, "_blank", "noopener"); return; }
-    var d = $("#pdfv");
-    if (!d) {
-      d = document.createElement("dialog"); d.id = "pdfv"; d.className = "pdfv"; d.setAttribute("aria-labelledby", "pdfv-t");
-      d.innerHTML = '<div class="pdfv-h"><strong id="pdfv-t"></strong><span><a class="btn-sm" id="pdfv-o" target="_blank" rel="noopener noreferrer">Open in new tab</a><a class="btn-sm" id="pdfv-d" download>Download</a><button type="button" class="btn-sm" id="pdfv-x">Close</button></span></div><iframe id="pdfv-f" title="PDF viewer"></iframe>';
-      document.body.appendChild(d);
-      $("#pdfv-x").addEventListener("click", function () { d.close(); });
-      d.addEventListener("close", function () { $("#pdfv-f").removeAttribute("src"); });
-    }
-    $("#pdfv-t").textContent = name || "PDF";
-    $("#pdfv-o").href = src; $("#pdfv-d").href = src;
-    $("#pdfv-f").src = src + "#view=FitH";
-    d.showModal();
+      '<dialog class="lb" id="lb" aria-labelledby="lb-title"><div class="lb-in"><button type="button" class="lb-x" aria-label="Close project details"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button><div class="lb-media"><img id="lb-img" alt=""><p class="lb-cap" id="lb-cap"></p><div class="lb-thumbs" id="lb-thumbs"></div></div><div class="lb-info"><small class="cat" id="lb-cat"></small><h2 id="lb-title"></h2><div id="lb-tag"></div><p id="lb-desc"></p><p id="lb-more"></p><dl id="lb-meta"></dl></div></div></dialog>';
   }
 
   function initPortfolio() {
@@ -205,24 +179,16 @@
       $("#lb-cat").textContent = catLabel(cur); $("#lb-title").textContent = cur.title;
       $("#lb-tag").innerHTML = '<span class="tag ' + (cur.status === "Learning example" ? "t-dev" : cur.status === "Completed" ? "t-cur" : "t-ph") + '">' + cur.status + "</span>";
       $("#lb-desc").textContent = cur.description; $("#lb-more").textContent = cur.details || "";
-      $("#lb-meta").innerHTML = (cur.tools.length ? "<dt>Software and tools</dt><dd>" + cur.tools.join(", ") + "</dd>" : "") + "<dt>Status</dt><dd>" + cur.status + "</dd>" + (cur.completionDate ? "<dt>Completed</dt><dd>" + cur.completionDate + "</dd>" : "") + (cur.location ? "<dt>Location</dt><dd>" + cur.location + "</dd>" : "") + (cur.externalUrl ? '<dt>Link</dt><dd><a class="lnk" href="' + cur.externalUrl + '" target="_blank" rel="noopener noreferrer">Open project link</a></dd>' : "") + (cur.videoUrl && !videoEmbed(cur.videoUrl) ? '<dt>Video</dt><dd><a class="lnk" href="' + cur.videoUrl + '" target="_blank" rel="noopener noreferrer">Watch video</a></dd>' : "") + ((cur.files || []).length ? "<dt>Drawings and PDFs</dt><dd>" + (cur.files || []).map(function (f, k) { var nm = f.label || ("File " + (k + 1)), isPdf = /\.pdf($|\?)/i.test(f.src || ""); return isPdf ? '<span class="pdf-row"><button type="button" class="lnk" data-pdf="' + f.src + '" data-name="' + nm.replace(/"/g, "") + '">View PDF: ' + nm + '</button> <a class="lnk" href="' + f.src + '" target="_blank" rel="noopener noreferrer">Open in new tab</a></span>' : '<a class="lnk" href="' + f.src + '" target="_blank" rel="noopener noreferrer">' + nm + "</a>"; }).join("<br>") + "</dd>" : "");
+      $("#lb-meta").innerHTML = (cur.tools.length ? "<dt>Software and tools</dt><dd>" + cur.tools.join(", ") + "</dd>" : "") + "<dt>Status</dt><dd>" + cur.status + "</dd>" + (cur.completionDate ? "<dt>Completed</dt><dd>" + cur.completionDate + "</dd>" : "") + (cur.location ? "<dt>Location</dt><dd>" + cur.location + "</dd>" : "") + (cur.externalUrl ? '<dt>Link</dt><dd><a class="lnk" href="' + cur.externalUrl + '" target="_blank" rel="noopener noreferrer">Open project link</a></dd>' : "") + (cur.videoUrl ? '<dt>Video</dt><dd><a class="lnk" href="' + cur.videoUrl + '" target="_blank" rel="noopener noreferrer">Watch video</a></dd>' : "") + ((cur.files || []).length ? "<dt>Files</dt><dd>" + (cur.files || []).map(function (f) { return '<a class="lnk" href="' + f.src + '" target="_blank" rel="noopener noreferrer">' + (f.label || "Download file") + "</a>"; }).join("<br>") + "</dd>" : "");
       $("#lb-thumbs").innerHTML = cur.images.length > 1 ? map(cur.images, function (im, j) { return '<button type="button" data-i="' + j + '" title="' + (im.alt || "") + '" aria-label="Show sheet ' + (j + 1) + ' of ' + cur.images.length + '"><img src="' + im.src + '" alt="" width="800" height="600"></button>'; }) : "";
-      var pv = $("#lb-pdf"); pv.hidden = true; pv.innerHTML = "";
-      $("#lb-stack").innerHTML = map(cur.images, function (im) { return '<figure class="lb-fig"><img src="' + im.src + '" alt="' + (im.alt || "").replace(/"/g, "") + '" loading="lazy">' + (im.alt ? "<figcaption>" + im.alt + "</figcaption>" : "") + "</figure>"; });
-      var vh = videoEmbed(cur.videoUrl), vb = $("#lb-video"); vb.innerHTML = vh; vb.hidden = !vh;
-      $(".lb-media").scrollTop = 0; dlg.scrollTop = 0;
+      show(0);
       document.documentElement.classList.add("lock");
       dlg.showModal();
     }
     grid.addEventListener("click", function (e) { var b = e.target.closest("[data-open]"); if (b) open(b.dataset.open); });
-    $("#lb-meta").addEventListener("click", function (e) {
-      var b = e.target.closest("[data-pdf]"); if (!b) return;
-      openPdf(b.getAttribute("data-pdf"), b.getAttribute("data-name") || "PDF");
-    });
-    $("#lb-pdf").addEventListener("click", function (e) { if (e.target.closest(".lb-pdf-x")) { this.hidden = true; this.innerHTML = ""; } });
     $(".lb-x").addEventListener("click", function () { dlg.close(); });
     dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
-    dlg.addEventListener("close", function () { document.documentElement.classList.remove("lock"); var vb = $("#lb-video"); if (vb) { vb.innerHTML = ""; vb.hidden = true; } });
+    dlg.addEventListener("close", function () { document.documentElement.classList.remove("lock"); });
     $("#lb-thumbs").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) show(+b.dataset.i); });
     dlg.addEventListener("keydown", function (e) {
       if (!cur || cur.images.length < 2 || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
@@ -449,4 +415,41 @@
       requestAnimationFrame(function () { g.style.transform = "translateY(" + Math.min(window.scrollY, 700) * 0.15 + "px)"; t = false; });
     }, { passive: true });
   }
+
+  /* ---- Cinematic 3D scroll mode (default on; switch off in Admin > Website Design > Scroll effects). Respects reduced-motion. ---- */
+  (function cinematic() {
+    var mode = (S.design && S.design.motion) || "cinematic";
+    if (mode !== "cinematic" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var root = document.documentElement; root.classList.add("cine");
+    var bar = document.createElement("div"); bar.id = "progress"; bar.setAttribute("aria-hidden", "true"); document.body.appendChild(bar);
+    var hl = document.querySelector(".hero .headline");
+    if (hl && !hl.dataset.split) {
+      var txt = hl.textContent.trim(); hl.setAttribute("aria-label", txt); hl.dataset.split = "1"; hl.textContent = "";
+      txt.split(/\s+/).forEach(function (w, i) { var sp = document.createElement("span"); sp.className = "w"; sp.setAttribute("aria-hidden", "true"); sp.style.setProperty("--i", i); sp.textContent = w; hl.appendChild(sp); hl.appendChild(document.createTextNode(" ")); });
+    }
+    var targets = [].slice.call(document.querySelectorAll(".card, .shot, .cta-box")), active = new Set(), vh = innerHeight, vw = innerWidth, queued = false;
+    targets.forEach(function (el) { el.setAttribute("data-s3d", ""); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? active.add(e.target) : active.delete(e.target); }); update(); }, { rootMargin: "25% 0px" });
+    targets.forEach(function (el) { io.observe(el); });
+    function frame() {
+      queued = false; var y = window.scrollY, max = Math.max(1, document.documentElement.scrollHeight - vh);
+      root.style.setProperty("--sy", Math.min(y, vh * 1.3).toFixed(0)); root.style.setProperty("--prog", Math.min(1, y / max).toFixed(4));
+      var nav = document.querySelector(".nav"); if (nav) nav.classList.toggle("scrolled", y > 20);
+      active.forEach(function (el) {
+        var r = el.getBoundingClientRect(), p = Math.max(-1.3, Math.min(1.3, ((r.top + r.height / 2) - vh / 2) / (vh / 2))), cx = Math.max(-1.3, Math.min(1.3, ((r.left + r.width / 2) - vw / 2) / (vw / 2)));
+        el.style.setProperty("--p", p.toFixed(3)); el.style.setProperty("--a", Math.abs(p).toFixed(3)); el.style.setProperty("--cx", cx.toFixed(3));
+      });
+    }
+    function update() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
+    addEventListener("scroll", update, { passive: true }); addEventListener("resize", function () { vh = innerHeight; vw = innerWidth; update(); }); update();
+    if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      document.addEventListener("pointermove", function (e) {
+        var c = e.target.closest && e.target.closest(".card");
+        if (c) { var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5; c.style.setProperty("--tx", (-y * 8).toFixed(2) + "deg"); c.style.setProperty("--ty", (x * 10).toFixed(2) + "deg"); }
+        var hero = document.querySelector(".hero");
+        if (hero) { var hr = hero.getBoundingClientRect(); if (e.clientY >= hr.top && e.clientY <= hr.bottom) { root.style.setProperty("--hx", ((e.clientX - hr.left) / hr.width - 0.5).toFixed(3)); root.style.setProperty("--hy", ((e.clientY - hr.top) / hr.height - 0.5).toFixed(3)); } }
+      }, { passive: true });
+      document.addEventListener("pointerout", function (e) { var c = e.target.closest && e.target.closest(".card"); if (c && !c.contains(e.relatedTarget)) { c.style.removeProperty("--tx"); c.style.removeProperty("--ty"); } });
+    }
+  })();
 })();
