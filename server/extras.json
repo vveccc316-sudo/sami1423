@@ -15,22 +15,15 @@
   "homeSections": [
     {
       "key": "hero",
-      "label": "Hero",
+      "label": "Hero (photo)",
       "enabled": true
     },
     {
-      "key": "about",
-      "label": "About Me",
-      "enabled": true,
-      "heading": "About Me",
-      "sub": ""
-    },
-    {
       "key": "projects",
-      "label": "Featured Projects",
+      "label": "Selected Work (projects)",
       "enabled": true,
-      "heading": "My Work",
-      "sub": "Selected drawings, BIM models and technical projects.",
+      "heading": "Selected Work",
+      "sub": "Open any project to browse every photo and PDF drawing inside it.",
       "buttonText": "View Full Portfolio"
     },
     {
@@ -41,30 +34,15 @@
       "sub": "Skills I use today, and the ones I am actively learning."
     },
     {
-      "key": "services",
-      "label": "Services & Technical Capabilities",
+      "key": "certificates",
+      "label": "Qualifications & Certificates",
       "enabled": true,
-      "heading": "Services & Technical Capabilities",
-      "sub": "The kinds of technical work my current skills cover."
-    },
-    {
-      "key": "journey",
-      "label": "Practical Experience & Learning Journey",
-      "enabled": true,
-      "heading": "Practical Experience & Learning Journey",
-      "sub": "Dates and employers can be added here once confirmed."
-    },
-    {
-      "key": "preview",
-      "label": "Featured Work Preview",
-      "enabled": true,
-      "heading": "Featured Work Preview",
-      "sub": "A visual look at the kind of work this portfolio will showcase. Images are placeholders.",
-      "buttonText": "Explore the Portfolio"
+      "heading": "Qualifications & Certificates",
+      "sub": "Education, training and certificates."
     },
     {
       "key": "contact",
-      "label": "Closing Section",
+      "label": "Closing / Contact",
       "enabled": true
     },
     {
@@ -73,6 +51,28 @@
       "enabled": false,
       "heading": "Professional Highlights",
       "sub": ""
+    },
+    {
+      "key": "services",
+      "label": "Services & Capabilities",
+      "enabled": false,
+      "heading": "Services & Technical Capabilities",
+      "sub": "The kinds of technical work my current skills cover."
+    },
+    {
+      "key": "journey",
+      "label": "Experience & Learning Journey",
+      "enabled": false,
+      "heading": "Practical Experience & Learning Journey",
+      "sub": "Dates and employers can be added here once confirmed."
+    },
+    {
+      "key": "preview",
+      "label": "Work Preview",
+      "enabled": false,
+      "heading": "Featured Work Preview",
+      "sub": "",
+      "buttonText": "Explore the Portfolio"
     }
   ],
   "homeClosing": {
@@ -83,13 +83,13 @@
     "btn2Text": "Connect on LinkedIn"
   },
   "design": {
-    "primary": "#8AA4FF",
-    "secondary": "#8AA4FF",
-    "accent": "#A9BBFF",
-    "background": "#0A0A0B",
-    "headingFont": "Manrope",
+    "primary": "#C8FF4D",
+    "secondary": "#5B8DFF",
+    "accent": "#DCFF93",
+    "background": "#050608",
+    "headingFont": "Sora",
     "bodyFont": "Inter",
-    "radius": 10,
+    "radius": 18,
     "buttonStyle": "pill",
     "theme": "dark",
     "motion": "cinematic"

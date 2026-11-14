@@ -21,7 +21,7 @@ const api = async (path, o = {}) => {
   return j;
 };
 const fail = e => { if (!e.handled) toast(e.message + (e.data && e.data.details ? ' ' + e.data.details.join('; ') : ''), true); };
-const LABELS = { portfolio: 'Projects', portfolioFilters: 'Project categories', servicesPage: 'Services page', services: 'Home page service items', projects: 'Home fallback project cards', homeSections: 'Home sections', homeClosing: 'Home closing section', cards: 'Cards', nav: 'Menu links', social: 'Social links', seo: 'SEO', skillGroups: 'Skill groups', cta1Text: 'Button 1 text', cta1Href: 'Button 1 link', cta2Text: 'Button 2 text', cta2Href: 'Button 2 link', btn1Text: 'Button 1 text', btn1Href: 'Button 1 link', btn2Text: 'Button 2 text', ogImage: 'Social sharing image', externalUrl: 'External project link', videoUrl: 'Video link (YouTube, Vimeo or file URL)', credentialUrl: 'Credential verification link', developingTools: 'Tools (currently learning)', completionDate: 'Completion date', buttonText: 'Button text', buttonHref: 'Button link', pdf: 'PDF file', src: 'Photo / file (click Choose / Upload)', image: 'Photo (click Choose / Upload)', img: 'Photo (click Choose / Upload)', motion: 'Scroll effects (3D)', thumbnail: 'Cover image: upload here to replace the placeholder (shown on the project card)', images: 'Project photos: add as many as you like (plans, sections, elevations, renders...)', files: 'PDF drawings and other files', alt: 'Caption (example: Front view)' };
+const LABELS = { portfolio: 'Projects', portfolioFilters: 'Project categories', servicesPage: 'Services page', services: 'Home page service items', projects: 'Home fallback project cards', homeSections: 'Home sections', homeClosing: 'Home closing section', cards: 'Cards', nav: 'Menu links', social: 'Social links', seo: 'SEO', skillGroups: 'Skill groups', cta1Text: 'Button 1 text', cta1Href: 'Button 1 link', cta2Text: 'Button 2 text', cta2Href: 'Button 2 link', btn1Text: 'Button 1 text', btn1Href: 'Button 1 link', btn2Text: 'Button 2 text', ogImage: 'Social sharing image', externalUrl: 'External project link', videoUrl: 'Video link (YouTube, Vimeo or file URL)', credentialUrl: 'Credential verification link', developingTools: 'Tools (currently learning)', completionDate: 'Completion date', buttonText: 'Button text', buttonHref: 'Button link', pdf: 'PDF file', src: 'File', motion: 'Scroll effects (3D)', thumbnail: 'Cover image (shown on the project card)', images: 'Project photos (front view, side view, renders...)', files: 'PDF drawings and other files', alt: 'Caption (example: Front view)' };
 const label = k => LABELS[k] || String(k).replace(/([A-Z])/g, ' $1').replace(/[_-]/g, ' ').replace(/^./, c => c.toUpperCase());
 let SITE = null, META = null, dirty = false;
 const mark = () => { dirty = true; const d = $('#dirty'); if (d) d.hidden = false; const b = $('#save'); if (b) b.disabled = false; };
@@ -80,14 +80,11 @@ const LONG = /^(desc|description|details|text|intro|blurb|biography|careerObject
 const HIDE = new Set(['id', 'order']);
 const NOADD = new Set(['homeSections']);
 const uid = p => p + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
-const reorder = p => ({ id: p.id, title: p.title, thumbnail: p.thumbnail, images: p.images, files: p.files, ...p });
 const TEMPLATES = {
-  portfolio: () => reorder({ id: uid('p'), title: 'New project', category: (SITE.portfolioFilters.find(f => f.key !== 'all') || {}).key || '', thumbnail: '', images: [], description: '', details: '', tools: [], status: 'Placeholder', order: 0, visible: true, completionDate: '', location: '', externalUrl: '', videoUrl: '', files: [], featured: false }),
+  portfolio: () => ({ id: uid('p'), title: 'New project', category: (SITE.portfolioFilters.find(f => f.key !== 'all') || {}).key || '', thumbnail: '', images: [], description: '', details: '', tools: [], status: 'Placeholder', order: 0, visible: true, completionDate: '', location: '', externalUrl: '', videoUrl: '', files: [], featured: false }),
   portfolioFilters: () => ({ key: '', label: 'New category' }),
   items: () => ({ id: uid('s'), icon: 'ruler', title: 'New service', description: '', tools: [], developingTools: [], status: 'Current', price: '', order: 0, visible: true, image: '', category: '', buttonText: '', buttonHref: '' }),
-  skills: () => ({ icon: 'ruler', name: 'New skill', desc: '', cat: '', status: 'current', level: '', visible: true, image: '' }),
-  services: () => ({ icon: 'ruler', name: 'New service', desc: '', image: '' }),
-  journey: () => ({ title: 'New step', text: '', image: '' }),
+  skills: () => ({ icon: 'ruler', name: 'New skill', desc: '', cat: '', status: 'current', level: '', visible: true }),
   certificates: () => ({ id: uid('c'), title: 'New certificate', category: 'cad', issuer: '', date: '', description: '', image: '', pdf: '', credentialUrl: '', order: 0, visible: true }),
   awards: () => ({ id: uid('a'), title: 'New award', issuer: '', date: '', description: '', order: 0, visible: true }),
   nav: () => ({ label: 'New link', href: '', visible: true }), social: () => ({ label: 'New link', icon: 'link', url: '' }),
@@ -109,6 +106,7 @@ function selectOptions(key, path, obj) {
   if (key === 'status' && 'cat' in obj) return ['current', 'developing'];
   if (key === 'status' && 'developingTools' in obj) return ['Current', 'Developing'];
   if (key === 'status' && path.startsWith('portfolio.')) return ['Placeholder', 'Learning example', 'Completed'];
+  if (key === 'category' && path.startsWith('certificatesPage.certificates.')) return ((SITE.certificatesPage || {}).categories || []).map(c => [c.key, c.title]);
   if (key === 'category' && path.startsWith('portfolio.')) return SITE.portfolioFilters.filter(f => f.key !== 'all').map(f => [f.key, f.label]);
   return null;
 }
@@ -155,7 +153,7 @@ const shrinkImg = async f => {
   } catch { return f; }
 };
 function bulkBar(arr, key, redraw) {
-  const isImg = key === 'images';
+  const isImg = key === 'images', isCert = key === 'certificates';
   const input = h('input', { type: 'file', multiple: true, hidden: true, accept: isImg ? 'image/jpeg,image/png,image/webp,image/gif,image/avif' : 'application/pdf,image/jpeg,image/png,image/webp', onchange: async () => {
     const picked = [...input.files]; input.value = ''; if (!picked.length) return;
     try {
@@ -163,17 +161,19 @@ function bulkBar(arr, key, redraw) {
       for (const f0 of picked) {
         const f = await shrinkImg(f0);
         if (f.size > 4.2 * 1024 * 1024) { bad.push(f0.name + ': larger than 4 MB, compress it first'); continue; }
-        const fd = new FormData(); fd.append('files', f); fd.append('folder', 'Projects');
+        const fd = new FormData(); fd.append('files', f); fd.append('folder', isCert ? 'Certificates' : 'Projects');
         try { const r = await api('/api/admin/media', { method: 'POST', form: fd }); bad.push(...r.rejected); } catch (e) { if (e.data && e.data.rejected) bad.push(...e.data.rejected); else throw e; }
       }
       const added = (await api('/api/admin/media')).items.filter(m => !before.has(m.id)).reverse();
-      added.forEach(m => arr.push(isImg ? { src: m.url, alt: m.name } : { src: m.url, label: m.name }));
+      const firstCat = ((SITE.certificatesPage || {}).categories || [])[0], base = m => m.name.replace(/\.[^.]+$/, '');
+      added.forEach(m => arr.push(isCert ? { id: uid('c'), title: base(m), category: firstCat ? firstCat.key : '', issuer: '', date: '', description: '', image: m.kind === 'image' ? m.url : '', pdf: m.kind === 'pdf' ? m.url : '', credentialUrl: '', order: 0, visible: true } : isImg ? { src: m.url, alt: m.name } : { src: m.url, label: m.name }));
+      if (isCert) renumber(arr);
       if (added.length) mark(); redraw();
-      toast('Added ' + added.length + (isImg ? ' photo(s).' : ' file(s).') + (added.length ? ' Remember to press Save changes.' : '') + (bad.length ? ' Rejected: ' + bad.join('; ') : ''), bad.length > 0);
+      toast('Added ' + added.length + (isCert ? ' certificate(s). Open each one to type its title, issuer and date.' : isImg ? ' photo(s).' : ' file(s).') + (added.length ? ' Remember to press Save changes.' : '') + (bad.length ? ' Rejected: ' + bad.join('; ') : ''), bad.length > 0);
     } catch (e) { fail(e); }
   } });
-  return h('div', { class: 'bar' }, h('button', { class: 'btn pri', type: 'button', onclick: () => input.click() }, isImg ? 'Upload photos (select several at once)' : 'Upload PDFs / files (select several at once)'), input,
-    h('span', { class: 'hint', style: 'margin:0' }, isImg ? 'Each photo can get a caption, for example "Front view" or "Side view".' : 'PDF drawings and other documents for this item.'));
+  return h('div', { class: 'bar' }, h('button', { class: 'btn pri', type: 'button', onclick: () => input.click() }, isCert ? 'Upload certificate photos / PDFs (select as many as you like)' : isImg ? 'Upload photos (select several at once)' : 'Upload PDFs / files (select several at once)'), input,
+    h('span', { class: 'hint', style: 'margin:0' }, isCert ? 'Every file becomes one certificate card. Then open the card to set its title, issuer, date and category.' : isImg ? 'Each photo can get a caption, for example "Front view" or "Side view".' : 'PDF drawings and other documents for this item.'));
 }
 function objList(arr, key, path, text) {
   const box = h('div'); let dragFrom = null;
@@ -201,7 +201,7 @@ function objList(arr, key, path, text) {
   };
   const lg = h('legend', {}); const tick = () => { lg.textContent = text + ' (' + arr.length + ')'; };
   draw(); tick(); box.addEventListener('click', () => setTimeout(tick, 0)); box.addEventListener('drop', () => setTimeout(tick, 0));
-  const bulk = (key === 'images' || key === 'files') ? bulkBar(arr, key, () => { draw(); tick(); }) : null;
+  const bulk = (key === 'images' || key === 'files' || key === 'certificates') ? bulkBar(arr, key, () => { draw(); tick(); }) : null;
   return h('fieldset', {}, lg, bulk, box);
 }
 
@@ -303,12 +303,12 @@ const E = (id, label, keys, hint) => ({ id, label, keys, hint });
 const SECTIONS = [
   { id: 'dashboard', label: 'Dashboard', view: dashboard },
   E('profile', 'Profile Settings', ['name', 'initials', 'title', 'headline', 'intro', 'photo', 'photoAlt', 'profile', 'contact'], 'Your name, title, photo, contact details and extended profile (education and experience also appear on the About page when filled in).'),
-  E('home', 'Home Page', ['hero', 'homeSections', 'highlights', 'projects', 'journey', 'preview', 'homeClosing'], 'Use "Home sections" to switch sections on/off, reorder them and change their headings. "Projects" below are the fallback cards: the Home page shows projects marked Featured instead, when any exist.'),
+  E('home', 'Home Page', ['hero', 'homeSections', 'highlights', 'projects', 'journey', 'preview', 'homeClosing'], 'Use "Home sections" to switch sections on/off, reorder them and change their headings. Order now: photo, work, skills, qualifications. "Projects" below are the fallback cards: the Home page shows projects marked Featured instead, when any exist.'),
   E('about', 'About Page', ['about'], 'Everything on the About page. Add Education, Experience or extra sections below.'),
   E('projects', 'Projects', ['portfolioFilters', 'portfolio'], 'Categories become the filter tabs on the Portfolio page (a tab only appears once a visible project uses it). Tick "Featured" to show a project on the Home page. Drag the :: handle or use Up/Down to reorder.'),
   E('services', 'Services', ['servicesPage', 'services'], 'The Services page, plus the smaller services list shown on the Home page. Leave Price empty to show "Pricing on Request".'),
   { id: 'skills', label: 'Skills', keys: ['skills'], hint: 'Skill cards on the Home page. Level is optional and shown only if you fill it in. Skill groups on the About page are edited under About Page.' },
-  E('certificates', 'Certificates', ['certificatesPage'], 'Add certificates under "Certificates" and awards under "Awards". Upload the image or PDF with Choose / Upload.'),
+  E('certificates', 'Certificates', ['certificatesPage'], 'Press "Upload certificate photos / PDFs" under Certificates and pick as many files as you want: each file becomes a certificate card. Open a card to type its title, issuer and date, or to change its photo/PDF. Every visible certificate shows on the Certificates page (and the first six on the Home page).'),
   E('contactpage', 'Contact Page', ['contactPage'], 'Headings, labels, cards, messages and form options. Card values can use {email}, {whatsappDisplay}, {whatsappDigits}, {linkedin}, {location} from Profile Settings.'),
   { id: 'messages', label: 'Messages', view: messages, badge: true },
   { id: 'media', label: 'Media Library', view: media },

@@ -13,7 +13,7 @@ S.contactPage = Object.assign({}, contactExtras, S.contactPage, { formNote: cont
 const have = new Set(S.portfolioFilters.map(f => f.key));
 extraFilters.forEach(f => { if (!have.has(f.key)) S.portfolioFilters.push(f); });
 S.nav.forEach(n => { if (n.visible === undefined) n.visible = true; });
-S.portfolio.forEach(p => { Object.assign(p, { completionDate: '', location: '', externalUrl: '', videoUrl: '', files: [], featured: p.featured === true }); });
+S.portfolio.forEach(p => { Object.assign(p, { completionDate: '', location: '', externalUrl: '', videoUrl: '', files: [], featured: false }); });
 S.skills.forEach(k => { if (k.level === undefined) k.level = ''; k.visible = k.visible !== false; });
 S.servicesPage.items.forEach(s => { Object.assign(s, { image: '', category: '', buttonText: '', buttonHref: '' }); });
 fs.writeFileSync(path.join(root, 'server/default-site.json'), JSON.stringify(S, null, 2));

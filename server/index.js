@@ -5,7 +5,7 @@ const path = require('path'), fs = require('fs');
 const express = require('express'), multer = require('multer');
 const { ROOT } = require('./db');
 const store = require('./store-sqlite');
-const { createApi, designCss, esc, FONTS } = require('./core');
+const { createApi, designCss, normDesign, esc, FONTS } = require('./core');
 const core = createApi({ store });
 
 const app = express();
@@ -41,7 +41,7 @@ app.use(async (req, res, next) => {
 /* ----- public pages with server-side SEO/design injection ----- */
 const PAGES = ['index', 'about', 'services', 'portfolio', 'certificates', 'contact'];
 async function renderPage(name, req) {
-  const s = await core.getSite(), seo = s.seo || {}, d = s.design || {}, b = s.brand || {}, site = b.siteName || s.name;
+  const s = await core.getSite(), seo = s.seo || {}, d = normDesign(s.design || {}), b = s.brand || {}, site = b.siteName || s.name;
   let h = fs.readFileSync(path.join(ROOT, name + '.html'), 'utf8');
   const e = x => esc(String(x || '')), base = req.protocol + '://' + req.get('host');
   const abs = u => u ? (u.startsWith('/') ? base + u : u) : '';
@@ -53,7 +53,7 @@ async function renderPage(name, req) {
   const og = seo.ogImage ? `<meta property="og:image" content="${e(abs(seo.ogImage))}"><meta name="twitter:image" content="${e(abs(seo.ogImage))}">` : '';
   const head = (seo.keywords ? `<meta name="keywords" content="${e(seo.keywords)}">` : '') +
     `<meta property="og:type" content="website"><meta property="og:site_name" content="${e(site)}"><meta property="og:title" content="${e(seo.ogTitle || title)}"><meta property="og:description" content="${e(seo.ogDescription || seo.description)}"><meta name="twitter:card" content="${seo.ogImage ? 'summary_large_image' : 'summary'}">` + og +
-    (b.favicon ? `<link rel="icon" href="${e(b.favicon)}">` : '') + `<style id="site-design">${designCss(d)}</style>`;
+    (b.favicon ? `<link rel="icon" href="${e(b.favicon)}">` : '') + `<style id="site-design">${designCss(s.design || {})}</style>`;
   return h.replace('</head>', head + '</head>').replace('<html lang="en">', `<html lang="en" data-theme="${d.theme === 'dark' ? 'dark' : 'light'}" data-btn="${e(d.buttonStyle || 'pill')}">`);
 }
 const sendPage = name => async (req, res, next) => { try { res.set('Cache-Control', 'no-cache').type('html').send(await renderPage(name, req)); } catch (e) { next(e); } };

@@ -62,11 +62,20 @@ function validateSite(input) {
 }
 const esc = s => s.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const deepEsc = v => typeof v === 'string' ? esc(v) : Array.isArray(v) ? v.map(deepEsc) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, deepEsc(x)])) : v;
-function designCss(d) {
-  const ok = v => /^#[0-9a-f]{6}$/i.test(v || ''), v = [], dark = d.theme === 'dark';
-  if (ok(d.primary)) v.push('--orange:' + d.primary); if (ok(d.secondary)) v.push('--blue:' + d.secondary); if (ok(d.accent)) v.push('--orange-ink:' + d.accent);
+/* Settings saved before the redesign still hold the old orange/blue/light defaults. Treat those as "not customised"
+   so the new dark look shows; any colour/font/theme the owner really chose is kept. */
+function normDesign(d) {
+  d = Object.assign({}, d); const up = x => String(x || '').toUpperCase();
+  d.legacyColors = up(d.primary) === '#FF6A13' && up(d.secondary) === '#1F5BFF';
+  if (d.headingFont === 'Bricolage Grotesque' && d.bodyFont === 'Figtree') { d.headingFont = 'Sora'; d.bodyFont = 'Inter'; }
+  if (d.theme !== 'dark' && up(d.background) === '#F7F5F1') { d.theme = 'dark'; d.legacyBg = true; }
+  return d;
+}
+function designCss(d0) {
+  const d = normDesign(d0), ok = v => /^#[0-9a-f]{6}$/i.test(v || ''), v = [], dark = d.theme === 'dark';
+  if (!d.legacyColors) { if (ok(d.primary)) v.push('--orange:' + d.primary); if (ok(d.secondary)) v.push('--blue:' + d.secondary); if (ok(d.accent)) v.push('--orange-ink:' + d.accent); }
   if (!dark && ok(d.background)) v.push('--bg:' + d.background, `--bg2:color-mix(in srgb, ${d.background} 93%, #000)`);
-  if (Number.isFinite(+d.radius)) v.push('--r:' + Math.max(0, Math.min(40, +d.radius)) + 'px');
+  if (Number.isFinite(+d.radius) && +d.radius !== 14) v.push('--r:' + Math.max(0, Math.min(40, +d.radius)) + 'px');
   if (FONTS[d.headingFont]) v.push(`--display:"${d.headingFont}","Segoe UI",system-ui,sans-serif`);
   if (FONTS[d.bodyFont]) v.push(`--body:"${d.bodyFont}","Segoe UI",system-ui,sans-serif`);
   return ':root{' + v.join(';') + '}';
@@ -303,4 +312,4 @@ function createApi({ store, env = process.env }) {
   }
   return { handle, setupCode, getSite: async () => (await store.siteGet()).site };
 }
-module.exports = { createApi, validateSite, designCss, deepEsc, esc, FONTS, ICONS };
+module.exports = { createApi, validateSite, designCss, normDesign, deepEsc, esc, FONTS, ICONS };
